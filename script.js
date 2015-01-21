@@ -200,8 +200,11 @@
                 return;
             }
             snakeObj.direction = dir;
-            // add the current position to the past positions list
-            snakeObj.pastPositions.unshift(snakeObj.position);
+            // if it's not the same position as the last one
+            if(!snakeObj.pastPositions[snakeObj.pastPositions.length - 1].isSame(snakeObj.position)) {
+                // add the current position to the past positions list
+                snakeObj.pastPositions.unshift(snakeObj.position);
+            }
         };
         this.makeFood = function() {
             // -30 +  10 to make it 10px away from the border all of the time
